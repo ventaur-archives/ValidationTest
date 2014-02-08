@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"   />
+		<Asset src="twitterbootstrap"/>
+		<use content="head" />
+		<Styles />
+		<style>
+			.hint {
+				background-color: #ccb;
+				border: 1px solid;
+				padding: 0.25em;
+				margin-bottom: 1.5em;
+			}
+			.fails .hint {
+				background-color: #f99;
+			}
+			.fails legend {
+				color: #c00;
+			}
+			.fails input {
+				background-color: #daa;
+				color: #600;
+			}
+		</style>
+	</head>
+	<body data-spy="scroll" data-target=".bs-docs-sidebar">
+		<div id="top-menu" class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="#">ValidationTest</a>
+
+					<use content="navigation" />
+				</div>
+			</div>
+		</div>
+		<use content="masthead" />
+		<div id="Content" class="container" style="margin-top:50px">
+			<use content="main" />
+		</div>
+		<Scripts />
+		<footer class="footer">
+			<div class="container">
+				<use content="footer" />
+			</div>
+		</footer>
+		
+	</body>
+</html>

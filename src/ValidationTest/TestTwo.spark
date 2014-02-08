@@ -1,0 +1,95 @@
+﻿<viewdata model="ValidationTest.TestTwoInputModel" />
+<use namespace="ValidationTest" />
+<content name="title">Test Two</content>
+
+<content:main>
+	<h1>Test Two</h1>
+	<div class="well">
+		This model inherits its properties from a base class.
+		Name is required, Email is not. Empty and missing Name values (no key POSTed) fail with <strong>StackOverflowException</strong>.
+	</div>
+
+	<Form model="TestTwoInputModel">
+		<fieldset>
+			<legend>All Values Present</legend>
+		
+			<TestEdit name="Name" value="Test Guy" />
+			<TestEdit name="Email" value="tguy@nowhere.com" />
+			
+			<input type="submit" value="Post Ajax"/> <span class="result"></span>
+		</fieldset>
+	</Form>
+
+	<Form model="TestTwoInputModel">
+		<fieldset>
+			<legend>Empty Email</legend>
+
+			<TestEdit name="Name" value="Test Guy" />
+			<TestEdit name="Email" value="" />
+			<div class="hint">Empty value, but still POSTed.</div>
+			
+			<input type="submit" value="Post Ajax"/>
+			<span class="result"></span>
+		</fieldset>
+	</Form>
+	<Form model="TestTwoInputModel">
+		<fieldset>
+			<legend>Missing Email</legend>
+
+			<TestEdit name="Name" value="Test Guy" />
+			<DisabledEdit name="Email" value="" />
+			<div class="hint">Disabled, so <strong>never POSTed</strong>.</div>
+			
+			<input type="submit" value="Post Ajax"/>
+			<span class="result"></span>
+		</fieldset>
+	</Form>
+
+	<Form model="TestTwoInputModel">
+		<fieldset class="fails">
+			<legend>Empty Name</legend>
+
+			<TestEdit name="Name" value="" />
+			<div class="hint">Empty value, but still POSTed.</div>
+			<TestEdit name="Email" value="tguy@nowhere.com" />
+			
+			<input type="submit" value="Post Ajax"/>
+			<span class="result"></span>
+		</fieldset>
+	</Form>
+	<Form model="TestTwoInputModel">
+		<fieldset class="fails">
+			<legend>Missing Name</legend>
+
+			<DisabledEdit name="Name" value="" />
+			<div class="hint">
+				Disabled, so <strong>never POSTed</strong>.
+			</div>
+			<TestEdit name="Email" value="tguy@nowhere.com" />
+			
+			<input type="submit" value="Post Ajax"/>
+			<span class="result"></span>
+		</fieldset>
+	</Form>
+</content:main>
+
+<content:footer>
+	<script>
+		$(function () {
+			$('form').submit(function (e) {
+				e.preventDefault();
+
+				var $form = $(this);
+				var $result = $('span.result', $form);
+
+				$.post($form.prop('action'), $form.serialize())
+					.done(function () {
+						$result.text('Success!');
+					})
+					.fail(function (data) {
+						$result.text('Failure! ' + data);
+					});
+			});
+		});
+	</script>
+</content:footer>

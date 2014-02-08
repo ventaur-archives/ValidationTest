@@ -1,0 +1,19 @@
+<viewdata model="ValidationTest.HomeModel" />
+<use namespace="ValidationTest" />
+
+<content:masthead>
+
+</content:masthead>
+
+<content:main>
+	<h1>Required Validation Stack Overflow Issue</h1>
+	<ul>
+		<li><LinkTo modelType="TestOneRequestModel">Test One</LinkTo> - Required Name property with missing value from POSTed form causes SO.</li>
+		<li><LinkTo modelType="TestTwoRequestModel">Test Two</LinkTo> - Required Name property on inherited class with empty or missing value from POSTed form causes SO.</li>
+	</ul>
+</content:main>
+
+
+<content:footer>
+
+</content:footer>
